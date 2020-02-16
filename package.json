@@ -1,0 +1,36 @@
+{
+  "name": "vdn",
+  "version": "0.9.1",
+  "description": "Javascript validation library.",
+  "main": "src/vdn/index.js",
+  "files": [
+    "src/vdn"
+  ],
+  "scripts": {
+    "test": "node_modules/.bin/mocha",
+    "predocs": "node_modules/.bin/rimraf docs",
+    "docs": "node_modules/.bin/jsdoc --configure jsdoc.js --verbose"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stuartmcmahon/vdn.git"
+  },
+  "keywords": [
+    "javascript",
+    "validation"
+  ],
+  "author": "Stuart McMahon",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/stuartmcmahon/vdn/issues"
+  },
+  "homepage": "https://github.com/stuartmcmahon/vdn#readme",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "eslint": "^6.6.0",
+    "jsdoc": "^3.6.3",
+    "mocha": "^7.0.1",
+    "rimraf": "^3.0.0"
+  },
+  "dependencies": {}
+}
