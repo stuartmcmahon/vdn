@@ -271,8 +271,7 @@ nav {
     background: #f7f7f7;
     overflow-x: visible;
     overflow-y: auto;
-    height: 100%;
-    padding: 0px 30px 100px 30px;
+    padding: 0px 30px 0px 30px;
     height: 100%;
     position: fixed;
     transition: left 0.2s;
