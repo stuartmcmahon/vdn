@@ -304,9 +304,12 @@ function buildMemberNav(items, itemHeading, itemsSeen, linktoFn) {
           itemsNav += "<ul class='methods'>";
 
           methods.forEach(function (method) {
-            itemsNav += '<li data-type="method" id="' + item.name.replace('/', '_') + '-' + method.name + '-nav">';
-            itemsNav += linkto(method.longname, method.name);
-            itemsNav += '</li>';
+            // STU: Don't display inherited methods in derived classes.
+            if (!method.inherited) {
+              itemsNav += '<li data-type="method" id="' + item.name.replace('/', '_') + '-' + method.name + '-nav">';
+              itemsNav += linkto(method.longname, method.name);
+              itemsNav += '</li>';
+            }
           });
 
           itemsNav += '</ul>';

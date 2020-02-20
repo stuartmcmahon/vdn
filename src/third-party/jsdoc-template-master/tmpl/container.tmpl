@@ -174,9 +174,14 @@
     ?>
       <h3 class="subsection-title">Methods</h3>
 
-      <?js methods.forEach(function(m) { ?>
+      <?js methods.forEach(function(m) {
+        if (!m.inherited) {
+      ?>
         <?js= self.partial('method.tmpl', m) ?>
-      <?js }); ?>
+      <?js
+        }
+      });
+      ?>
     <?js } ?>
 
     <?js
