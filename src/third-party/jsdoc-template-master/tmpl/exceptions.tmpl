@@ -2,18 +2,18 @@
 <?js if (data.description && data.type && data.type.names) { ?>
   <dl>
     <dt>
-      <div class="param-desc">
-        <?js= data.description ?>
-      </div>
-    </dt>
-    <dd></dd>
-    <dt>
       <dl>
         <dt>Type</dt>
         <dd>
           <?js= this.partial('type.tmpl', data.type.names) ?>
         </dd>
       </dl>
+    </dt>
+    <dd></dd>
+    <dt>
+      <div class="param-desc">
+        <?js= data.description ?>
+      </div>
     </dt>
     <dd></dd>
   </dl>
