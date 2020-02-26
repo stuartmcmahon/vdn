@@ -1,3 +1,5 @@
+const SchemaUtils = require('../main/schema-utils');
+
 // Used instead of 'undefined' to check for missing values.
 const _notSet = new Object();
 const _objectProto = Object.prototype;
@@ -23,30 +25,6 @@ function _getDerivedClassMembers(obj, name) {
   return all;
 }
 
-/**
- * Put non-object values in an object to normalise access by validators.
- * @param {*} schema - The schema to normalise.
- * @example
- * normalise(5)         -> { value: 5 }
- * normalise('s')       -> { value: 's' }
- * normalise([])        -> { value: [] }
- * normalise(null)      -> { value: null }
- * normalise({})        -> {}               // No change
- * normalise({ s: 1 })  -> { s: 1 }         // No change
- */
-function _normalise(schema) {
-  // Check for vanilla javascript objects, excluding arrays and derived classes.
-  if (schema !== null && Object.getPrototypeOf(schema) === Object.prototype) {
-    return schema;
-  } else {
-    return { value: schema };
-  }
-}
-
-/**
- * Base validator class used to implement common validation functionality.
- * @hideconstructor
- */
 class BaseValidator {
   constructor(rules) {
     // TODO: Could make insertion very fast by putting rules in a [k, v] array, then:
@@ -89,11 +67,6 @@ class BaseValidator {
     return Object.assign({}, ...all.reverse());
   }
 
-  /**
-   * Validate a value against a schema.
-   * 
-   * See {@link VDN#validate}.
-   */
   validate(value, schema, state) {
     const defaults = this.getDerivedDefaults();
     const merged = { ...defaults, ...schema };
@@ -117,7 +90,7 @@ class BaseValidator {
         return;
       }
 
-      const ruleSchema = _normalise(data);
+      const ruleSchema = SchemaUtils.normalised(data);
 
       // Run rule and unpack result (result may be undefined).
       const {
@@ -146,17 +119,6 @@ class BaseValidator {
   }
 }
 
-/**
- * Default schema to apply to all instances of this class.
- * @example
- * BaseValidator.classDefaults = {
- *   required: true,
- * };
- * 
- * StringValidator.classDefaults = {
- *   maxLength: yourConfig.database.maxStringLength,
- * };
- */
 BaseValidator.classDefaults = {};
 
 module.exports = BaseValidator;

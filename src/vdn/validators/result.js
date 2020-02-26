@@ -1,5 +1,6 @@
 /**
  * Used to define results that can be returned by validators.
+ * @ignore
  */
 class Result {
   /**

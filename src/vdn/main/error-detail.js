@@ -1,34 +1,34 @@
 /**
- * Class that holds the details of a single error.
+ * Holds the details of a single error.
+ * @hideconstructor
  */
 class ErrorDetail {
-  /**
-   * Construct a new error detail.
-   * @param {string} message - See {@link ValidationError#message}.
-   * @param {Object[]} details - See {@link ValidationError#details}.
-   */
   constructor(path, type, message) {
     this.name = this.constructor.name;
   
     /**
-     * Path of this error.
+     * Path of the error.
      * @member {string[]}
      * @example
-     * detail.path -> []                       // At root level
-     * detail.path -> [ 'user', 'email' ]      // At 'user.email'
-     * detail.path -> [ 'user', 'tag', '[1]' ] // At 'user.tag[1]'
+     * detail.path -> []                        // At root level
+     * detail.path -> [ 'user', 'email' ]       // At 'user.email'
+     * detail.path -> [ 'user', 'tags', 1 ]     // At 'user.tags[1]'
      */
     this.path = path;
 
     /**
-     * The type of this error.
+     * The type of error.
      * @member {string}
+     * @example
+     * detail.type -> 'array.length'      // An array length error.
      */
     this.type = type;
   
     /**
      * A description of the error.
      * @member {string}
+     * @example
+     * detail.message -> "'country_code' length is not 2."
      */
     this.message = message;
   }

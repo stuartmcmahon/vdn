@@ -61,11 +61,6 @@ const _rules = [
   },
 ];
 
-/**
- * Validates Objects.
- * @extends AnyValidator
- * @hideconstructor
- */
 class ObjectValidator extends AnyValidator {
   constructor(rules) {
     super(_rules.concat(rules || []));

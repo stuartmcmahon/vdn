@@ -23,16 +23,10 @@ describe('number', function() {
 
   it('integer', function() {
     const schemaOne = vdn.number().integer();
-    const schemaTwo = vdn.number().integer(false);
 
     assert.deepEqual(schemaOne.toObject(), {
       type: 'number',
       integer: true,
-    });
-
-    assert.deepEqual(schemaTwo.toObject(), {
-      type: 'number',
-      integer: false,
     });
   });
 

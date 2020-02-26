@@ -1,5 +1,6 @@
 /**
- * Class that represents validation errors.
+ * A validation error.
+ * @hideconstructor
  */
 class ValidationError extends Error {
   /**

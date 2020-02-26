@@ -65,17 +65,7 @@ const _rules = [
   },
 ];
 
-/**
- * Validates numbers.
- * @extends AnyValidator
- * @hideconstructor
- */
 class NumberValidator extends AnyValidator {
-  /**
-   * The constructor.
-   * @description Some stuff.
-   * @param {Object} rules - Some rules.
-   */
   constructor(rules) {
     super(_rules.concat(rules || []));
   }

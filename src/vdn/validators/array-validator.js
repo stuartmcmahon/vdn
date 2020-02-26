@@ -59,7 +59,7 @@ const _rules = [
 
       // Iterate children.
       for (const [i, v] of value.entries()) {
-        const newEntry = state.substate(`[${i}]`).validate(v, items);
+        const newEntry = state.substate(i).validate(v, items);
         newValue.push(newEntry);
       }
 
@@ -69,11 +69,6 @@ const _rules = [
   },
 ];
 
-/**
- * Validates arrays.
- * @extends AnyValidator
- * @hideconstructor
- */
 class ArrayValidator extends AnyValidator {
   constructor(rules) {
     super(_rules.concat(rules || []));

@@ -109,16 +109,19 @@ var resources = templates.resources;
     <?js } ?>
 
     <?js= this.nav ?>
-    
+
     <h3></h3>
   </nav>
 
   <div id="main">
-    <?js if (title != 'Home') { ?>
+  
+    <!-- STU: Removed title for classes (duplicate for single file classes). -->
+    <?js if (title != 'Home' && type != 'Class') { ?>
       <h1 class="page-title">
         <?js= title ?>
       </h1>
     <?js } ?>
+    
 
     <?js= content ?>
   </div>

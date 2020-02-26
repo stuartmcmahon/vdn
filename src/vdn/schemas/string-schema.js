@@ -1,7 +1,11 @@
 const AnySchema = require('./any-schema')
+const SchemaUtils = require('../main/schema-utils');
+
+const _wrapped = SchemaUtils.wrapped.bind(SchemaUtils);
 
 /**
  * Convenience class for creating string schemas.
+ * @extends AnySchema
  * @hideconstructor
  */
 class StringSchema extends AnySchema {
@@ -9,82 +13,130 @@ class StringSchema extends AnySchema {
     super({ type: 'string' }, ...args);
   }
 
-  /**
-   * See {@link AnySchema#clone}.
-   */
   clone(schema) {
     return new StringSchema(this._schema, schema);
   }
 
   /**
-   * Construct a schema that requires a string to be only digits [0-9].
+   * Require a string to be only digits [0-9].
    * @example
-   * vdn.string().digits()
-   * vdn.string().digits(false)
-   */
-  digits(digits = true) {
-    return this.clone({ digits: digits });
+   * const schema = vdn.string().digits()
+   * 
+   * vdn.attempt('04', schema) // Result == '04' (valid)
+   * vdn.attempt('x', schema)  // Throws ValidationError
+   * @example <caption>Using data:</caption>
+   * const schema = {
+   *   type: 'string',
+   *   digits: true
+   * }
+   */   
+  digits() {
+    return this.clone({ digits: _wrapped(true) });
   }
 
   /**
-   * Construct a schema that requires a valid email address.
+   * Require a valid email address.
    * @example
-   * vdn.string().email()
-   * vdn.string().email(false)
+   * const schema = vdn.string().email()
+   * 
+   * vdn.attempt('a@b.com', schema) // Result == 'a@b.com' (valid)
+   * vdn.attempt('b.com', schema)   // Throws ValidationError
+   * @example <caption>Using data:</caption>
+   * const schema = {
+   *   type: 'string',
+   *   email: true
+   * }
    */
-  email(email = true) {
-    return this.clone({ email: email });
+  email() {
+    return this.clone({ email: _wrapped(true) });
   }
 
   /**
-   * Construct a schema that requires a hexadecimal string.
+   * Require a hexadecimal string.
    * @example
-   * vdn.string().hex()
-   * vdn.string().hex(false)
+   * const schema = vdn.string().hex()
+   * 
+   * vdn.attempt('0fE', schema)   // Result == '0fE' (valid)
+   * vdn.attempt('ghi', schema)   // Throws ValidationError
+   * @example <caption>Using data:</caption>
+   * const schema = {
+   *   type: 'string',
+   *   hex: true
+   * }
    */
-  hex(hex = true) {
-    return this.clone({ hex: hex });
+  hex() {
+    return this.clone({ hex: _wrapped(true) });
   }
 
   /**
-   * Construct a schema that requires an exact string length.
+   * Require an exact string length.
    * @param {number} length - The length required.
    * @example
-   * vdn.string().length(3)
+   * const schema = vdn.string().length(1)
+   * 
+   * vdn.attempt('x', schema)   // Result == 'x' (valid)
+   * vdn.attempt('gh', schema)  // Throws ValidationError
+   * @example <caption>Using data:</caption>
+   * const schema = {
+   *   type: 'string',
+   *   length: 1
+   * }
    */
   length(length) {
-    return this.clone({ length: length });
+    return this.clone({ length: _wrapped(length) });
   }
 
   /**
-   * Construct a schema that requires a maximum string length.
+   * Require a maximum string length.
    * @param {number} length - The maximum length allowed.
    * @example
-   * vdn.string().maxLength(5)
+   * const schema = vdn.string().maxLength(1)
+   * 
+   * vdn.attempt('x', schema)   // Result == 'x' (valid)
+   * vdn.attempt('gh', schema)  // Throws ValidationError
+   * @example <caption>Using data:</caption>
+   * const schema = {
+   *   type: 'string',
+   *   maxLength: 1
+   * }
    */
   maxLength(length) {
-    return this.clone({ maxLength: length });
+    return this.clone({ maxLength: _wrapped(length) });
   }
 
   /**
-   * Construct a schema that requires a minimum string length.
+   * Require a minimum string length.
    * @param {number} length - The minimum length allowed.
    * @example
-   * vdn.string().minLength(1)
+   * const schema = vdn.string().minLength(1)
+   * 
+   * vdn.attempt('x', schema)   // Result == 'x' (valid)
+   * vdn.attempt('', schema)    // Throws ValidationError
+   * @example <caption>Using data:</caption>
+   * const schema = {
+   *   type: 'string',
+   *   minLength: 1
+   * }
    */
   minLength(length) {
-    return this.clone({ minLength: length });
+    return this.clone({ minLength: _wrapped(length) });
   }
 
   /**
-   * Construct a schema that requires a string to not be empty, eg. ''
-   * is not allowed.
+   * Require a string to not be empty.
    * @example
-   * vdn.string().notEmpty()
-   * vdn.string().notEmpty(false)
+   * const schema = vdn.string().notEmpty()
+   * 
+   * vdn.attempt('x', schema)   // Result == 'x' (valid)
+   * vdn.attempt('', schema)    // Throws ValidationError
+   * @example <caption>Using data:</caption>
+   * const schema = {
+   *   type: 'string',
+   *   notEmpty: true
+   * }
    */
-  notEmpty(notEmpty = true) {
-    return this.clone({ notEmpty: notEmpty });
+  notEmpty() {
+    return this.clone({ notEmpty: _wrapped(true) });
   }
 }
 

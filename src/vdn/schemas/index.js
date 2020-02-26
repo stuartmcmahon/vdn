@@ -1,16 +1,17 @@
-const AnySchema = require('../schemas/any-schema')
-const ArraySchema = require('../schemas/array-schema')
-const NumberSchema = require('../schemas/number-schema')
-const ObjectSchema = require('../schemas/object-schema')
-const StringSchema = require('../schemas/string-schema')
+const AnySchema = require('./any-schema')
+const ArraySchema = require('./array-schema')
+const NumberSchema = require('./number-schema')
+const ObjectSchema = require('./object-schema')
+const StringSchema = require('./string-schema')
 
 /**
  * Convenience methods for constructing schema types.
  * @hideconstructor
  */
-class Types {
+class Schemas {
   /**
    * Construct a schema that allows any value.
+   * @returns {AnySchema}
    */
   any() {
     return new AnySchema();
@@ -18,6 +19,7 @@ class Types {
 
   /**
    * Construct an array schema.
+   * @returns {ArraySchema}
    */
   array() {
     return new ArraySchema();
@@ -25,6 +27,7 @@ class Types {
 
   /**
    * Construct a number schema.
+   * @returns {NumberSchema}
    */
   number() {
     return new NumberSchema();
@@ -32,6 +35,7 @@ class Types {
 
   /**
    * Construct an object schema.
+   * @returns {ObjectSchema}
    */
   object() {
     return new ObjectSchema();
@@ -39,6 +43,7 @@ class Types {
 
   /**
    * Construct a string schema.
+   * @returns {StringSchema}
    */
   string() {
     return new StringSchema();
@@ -46,4 +51,4 @@ class Types {
   
 }
 
-module.exports = Types;
+module.exports = Schemas;

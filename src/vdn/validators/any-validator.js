@@ -71,11 +71,6 @@ const _rules = [
   },
 ];
 
-/**
- * Any value validator.
- * @extends BaseValidator
- * @hideconstructor
- */
 class AnyValidator extends BaseValidator {
   constructor(rules) {
     super(_rules.concat(rules || []));

@@ -146,11 +146,6 @@ const _rules = [
   },
 ];
 
-/**
- * Validates strings.
- * @extends AnyValidator
- * @hideconstructor
- */
 class StringValidator extends AnyValidator {
   constructor(rules) {
     super(_rules.concat(rules || []));

@@ -79,8 +79,9 @@ class State {
    * @param {string} name - The name of the new child state.
    * @returns {State} New substate.
    * @example
-   * substate('a')               -> path == [ 'a' ]
-   * substate('a').substate('b') -> path == [ 'a', 'b' ]
+   * substate('a')               -> path == [ 'a' ]      // At 'a'
+   * substate('a').substate('b') -> path == [ 'a', 'b' ] // At 'a.b'
+   * substate('a').substate(1)   -> path == [ 'a', 1 ]   // At 'a[1]'
    */
   substate(name) {
     const overrides = { path: this.path.concat(name) };

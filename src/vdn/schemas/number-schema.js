@@ -1,7 +1,11 @@
 const AnySchema = require('./any-schema')
+const SchemaUtils = require('../main/schema-utils');
+
+const _wrapped = SchemaUtils.wrapped.bind(SchemaUtils);
 
 /**
  * Convenience class for creating number schemas.
+ * @extends AnySchema
  * @hideconstructor
  */
 class NumberSchema extends AnySchema {
@@ -9,43 +13,62 @@ class NumberSchema extends AnySchema {
     super({ type: 'number' }, ...args);
   }
 
-  /**
-   * See {@link AnySchema#clone}.
-   */
   clone(schema) {
     return new NumberSchema(this._schema, schema);
   }
 
   /**
-   * Construct a schema that requires an integer number.
+   * Require a number to be an integer.
    * @example
-   * vdn.number().integer()
-   * vdn.number().integer(false)
+   * const schema = vdn.number().integer()
+   * 
+   * vdn.attempt(5, schema)       // Result == 5 (valid)
+   * vdn.attempt(5.3, schema)     // Throws ValidationError
+   * @example <caption>Using data:</caption>
+   * const schema = {
+   *   type: 'number',
+   *   integer: true
+   * }
    */
-  integer(integer = true) {
-    return this.clone({ integer: integer });
+  integer() {
+    return this.clone({ integer: _wrapped(true) });
   }
 
   /**
-   * Construct a schema that limits the maximum value.
+   * Limit the maximum value.
    * @param {number} value - The maximum value allowed.
    * @example
-   * vdn.number().max(142)
+   * const schema = vdn.number().max(42)
+   * 
+   * vdn.attempt(42, schema)     // Result == 42 (valid)
+   * vdn.attempt(43, schema)     // Throws ValidationError
+   * @example <caption>Using data:</caption>
+   * const schema = {
+   *   type: 'number',
+   *   max: 42
+   * }
    */
   max(value) {
-    return this.clone({ max: value });
+    return this.clone({ max: _wrapped(value) });
   }
 
   /**
-   * Construct a schema that limits the minimum value.
+   * Limit the minimum value.
    * @param {number} value - The minimum value allowed.
    * @example
-   * vdn.number().min(42)
+   * const schema = vdn.number().min(42)
+   * 
+   * vdn.attempt(42, schema)     // Result == 42 (valid)
+   * vdn.attempt(41, schema)     // Throws ValidationError
+   * @example <caption>Using data:</caption>
+   * const schema = {
+   *   type: 'number',
+   *   min: 42
+   * }
    */
   min(value) {
-    return this.clone({ min: value });
+    return this.clone({ min: _wrapped(value) });
   }
-
 }
 
 module.exports = NumberSchema;

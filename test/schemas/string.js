@@ -23,46 +23,28 @@ describe('string', function() {
 
   it('digits', function() {
     const schemaOne = vdn.string().digits();
-    const schemaTwo = vdn.string().digits(false);
 
     assert.deepEqual(schemaOne.toObject(), {
       type: 'string',
       digits: true,
     });
-
-    assert.deepEqual(schemaTwo.toObject(), {
-      type: 'string',
-      digits: false,
-    });
   });
 
   it('email', function() {
     const schemaOne = vdn.string().email();
-    const schemaTwo = vdn.string().email(false);
 
     assert.deepEqual(schemaOne.toObject(), {
       type: 'string',
       email: true,
     });
-
-    assert.deepEqual(schemaTwo.toObject(), {
-      type: 'string',
-      email: false,
-    });
   });
 
   it('hex', function() {
     const schemaOne = vdn.string().hex();
-    const schemaTwo = vdn.string().hex(false);
 
     assert.deepEqual(schemaOne.toObject(), {
       type: 'string',
       hex: true,
-    });
-
-    assert.deepEqual(schemaTwo.toObject(), {
-      type: 'string',
-      hex: false,
     });
   });
 
@@ -116,16 +98,10 @@ describe('string', function() {
 
   it('notEmpty', function() {
     const schemaOne = vdn.string().notEmpty();
-    const schemaTwo = vdn.string().notEmpty(false);
 
     assert.deepEqual(schemaOne.toObject(), {
       type: 'string',
       notEmpty: true,
-    });
-
-    assert.deepEqual(schemaTwo.toObject(), {
-      type: 'string',
-      notEmpty: false,
     });
   });
 });
