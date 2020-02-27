@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>
+      ErrorDetail - Documentation
+  </title>
+
+  <link href="https://www.braintreepayments.com/images/favicon-ccda0b14.png" rel="icon" type="image/png">
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.7.0/highlight.min.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+
+  <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+  <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+  
+
+  
+
+  <!-- start Mixpanel -->
+  <script type="text/javascript">(function(e,a){if(!a.__SV){var b=window;try{var c,l,i,j=b.location,g=j.hash;c=function(a,b){return(l=a.match(RegExp(b+"=([^&]*)")))?l[1]:null};g&&c(g,"state")&&(i=JSON.parse(decodeURIComponent(c(g,"state"))),"mpeditor"===i.action&&(b.sessionStorage.setItem("_mpcehash",g),history.replaceState(i.desiredHash||"",e.title,j.pathname+j.search)))}catch(m){}var k,h;window.mixpanel=a;a._i=[];a.init=function(b,c,f){function e(b,a){var c=a.split(".");2==c.length&&(b=b[c[0]],a=c[1]);b[a]=function(){b.push([a].concat(Array.prototype.slice.call(arguments,
+  0)))}}var d=a;"undefined"!==typeof f?d=a[f]=[]:f="mixpanel";d.people=d.people||[];d.toString=function(b){var a="mixpanel";"mixpanel"!==f&&(a+="."+f);b||(a+=" (stub)");return a};d.people.toString=function(){return d.toString(1)+".people (stub)"};k="disable time_event track track_pageview track_links track_forms register register_once alias unregister identify name_tag set_config reset people.set people.set_once people.increment people.append people.union people.track_charge people.clear_charges people.delete_user".split(" ");
+  for(h=0;h<k.length;h++)e(d,k[h]);a._i.push([b,c,f])};a.__SV=1.2;b=e.createElement("script");b.type="text/javascript";b.async=!0;b.src="undefined"!==typeof MIXPANEL_CUSTOM_LIB_URL?MIXPANEL_CUSTOM_LIB_URL:"file:"===e.location.protocol&&"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js".match(/^\/\//)?"https://cdn.mxpnl.com/libs/mixpanel-2-latest.min.js":"//cdn.mxpnl.com/libs/mixpanel-2-latest.min.js";c=e.getElementsByTagName("script")[0];c.parentNode.insertBefore(b,c)}})(document,window.mixpanel||[]);
+  mixpanel.init("1919205b2da72e4da3b9b6639b444d59");</script>
+  <!-- end Mixpanel -->
+</head>
+
+<body>
+  <svg style="display: none;">
+    <defs>
+      <symbol id="linkIcon" fill="#706d77" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M0 0h24v24H0z" fill="none"/>
+          <path d="M3.9 12c0-1.71 1.39-3.1 3.1-3.1h4V7H7c-2.76 0-5 2.24-5 5s2.24 5 5 5h4v-1.9H7c-1.71 0-3.1-1.39-3.1-3.1zM8 13h8v-2H8v2zm9-6h-4v1.9h4c1.71 0 3.1 1.39 3.1 3.1s-1.39 3.1-3.1 3.1h-4V17h4c2.76 0 5-2.24 5-5s-2.24-5-5-5z"/>
+      </symbol>
+    </defs>
+  </svg>
+
+  <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+  <label for="nav-trigger" class="navicon-button x">
+    <div class="navicon"></div>
+  </label>
+
+  <label for="nav-trigger" class="overlay"></label>
+
+  <div class="top-nav-wrapper">
+    <ul>
+      <li >
+        <a href="index.html">
+          
+            <svg fill="#6D6D6D" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 20v-6h4v6h5v-8h3L12 3 2 12h3v8z"/>
+              <path d="M0 0h24v24H0z" fill="none"/>
+            </svg>
+          
+          
+        </a>
+      </li>
+
+      
+
+    </ul>
+  </div>
+
+  <nav>
+    <h3 class="reference-title">
+      vdn
+    </h3>
+
+    
+
+    <h3>Classes</h3><ul><li id="AnySchema-nav"><a href="AnySchema.html">AnySchema</a><ul class='methods'><li data-type="method" id="AnySchema-default-nav"><a href="AnySchema.html#default">default</a></li><li data-type="method" id="AnySchema-invalid-nav"><a href="AnySchema.html#invalid">invalid</a></li><li data-type="method" id="AnySchema-required-nav"><a href="AnySchema.html#required">required</a></li><li data-type="method" id="AnySchema-toObject-nav"><a href="AnySchema.html#toObject">toObject</a></li><li data-type="method" id="AnySchema-valid-nav"><a href="AnySchema.html#valid">valid</a></li></ul></li><li id="ArraySchema-nav"><a href="ArraySchema.html">ArraySchema</a><ul class='methods'><li data-type="method" id="ArraySchema-items-nav"><a href="ArraySchema.html#items">items</a></li><li data-type="method" id="ArraySchema-length-nav"><a href="ArraySchema.html#length">length</a></li><li data-type="method" id="ArraySchema-maxLength-nav"><a href="ArraySchema.html#maxLength">maxLength</a></li><li data-type="method" id="ArraySchema-minLength-nav"><a href="ArraySchema.html#minLength">minLength</a></li></ul></li><li id="ErrorDetail-nav"><a href="ErrorDetail.html">ErrorDetail</a></li><li id="NumberSchema-nav"><a href="NumberSchema.html">NumberSchema</a><ul class='methods'><li data-type="method" id="NumberSchema-integer-nav"><a href="NumberSchema.html#integer">integer</a></li><li data-type="method" id="NumberSchema-max-nav"><a href="NumberSchema.html#max">max</a></li><li data-type="method" id="NumberSchema-min-nav"><a href="NumberSchema.html#min">min</a></li></ul></li><li id="ObjectSchema-nav"><a href="ObjectSchema.html">ObjectSchema</a><ul class='methods'><li data-type="method" id="ObjectSchema-entries-nav"><a href="ObjectSchema.html#entries">entries</a></li></ul></li><li id="Schemas-nav"><a href="Schemas.html">Schemas</a><ul class='methods'><li data-type="method" id="Schemas-any-nav"><a href="Schemas.html#any">any</a></li><li data-type="method" id="Schemas-array-nav"><a href="Schemas.html#array">array</a></li><li data-type="method" id="Schemas-number-nav"><a href="Schemas.html#number">number</a></li><li data-type="method" id="Schemas-object-nav"><a href="Schemas.html#object">object</a></li><li data-type="method" id="Schemas-string-nav"><a href="Schemas.html#string">string</a></li></ul></li><li id="State-nav"><a href="State.html">State</a><ul class='methods'><li data-type="method" id="State-clone-nav"><a href="State.html#clone">clone</a></li><li data-type="method" id="State-error-nav"><a href="State.html#error">error</a></li><li data-type="method" id="State-substate-nav"><a href="State.html#substate">substate</a></li><li data-type="method" id="State-validate-nav"><a href="State.html#validate">validate</a></li></ul></li><li id="StringSchema-nav"><a href="StringSchema.html">StringSchema</a><ul class='methods'><li data-type="method" id="StringSchema-digits-nav"><a href="StringSchema.html#digits">digits</a></li><li data-type="method" id="StringSchema-email-nav"><a href="StringSchema.html#email">email</a></li><li data-type="method" id="StringSchema-hex-nav"><a href="StringSchema.html#hex">hex</a></li><li data-type="method" id="StringSchema-length-nav"><a href="StringSchema.html#length">length</a></li><li data-type="method" id="StringSchema-maxLength-nav"><a href="StringSchema.html#maxLength">maxLength</a></li><li data-type="method" id="StringSchema-minLength-nav"><a href="StringSchema.html#minLength">minLength</a></li><li data-type="method" id="StringSchema-notEmpty-nav"><a href="StringSchema.html#notEmpty">notEmpty</a></li></ul></li><li id="ValidationError-nav"><a href="ValidationError.html">ValidationError</a></li><li id="VDN-nav"><a href="VDN.html">VDN</a><ul class='methods'><li data-type="method" id="VDN-attempt-nav"><a href="VDN.html#attempt">attempt</a></li><li data-type="method" id="VDN-clearDefaults-nav"><a href="VDN.html#clearDefaults">clearDefaults</a></li><li data-type="method" id="VDN-setDefaults-nav"><a href="VDN.html#setDefaults">setDefaults</a></li><li data-type="method" id="VDN-validate-nav"><a href="VDN.html#validate">validate</a></li></ul></li></ul>
+
+    <h3></h3>
+  </nav>
+
+  <div id="main">
+  
+    <!-- STU: Removed title for classes (duplicate for single file classes). -->
+    
+    
+
+    
+
+<section>
+  <header>
+    
+      <h2>
+        
+        ErrorDetail
+        
+      </h2>
+
+      
+        <div class="class-description">
+          Holds the details of a single error.
+        </div>
+      
+    
+  </header>
+
+  <article>
+    <div class="container-overview">
+      
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+      
+    </div>
+
+    
+
+    
+
+    
+
+     
+
+    
+
+    
+        <h3 class="subsection-title">Members</h3>
+
+        
+            
+
+<h4 class="name" id="message">
+  <span class="type-signature"></span>message<span class="type-signature"> :string</span>
+</h4>
+
+
+
+
+  <div class="description">
+    A description of the error.
+  </div>
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+  <h5>Example</h5>
+  
+
+  <pre class="prettyprint"><code>detail.message -> "'country_code' length is not 2."</code></pre>
+
+
+
+
+          
+        
+            
+
+<h4 class="name" id="path">
+  <span class="type-signature"></span>path<span class="type-signature"> :Array.&lt;string></span>
+</h4>
+
+
+
+
+  <div class="description">
+    Path of the error.
+  </div>
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+  <h5>Example</h5>
+  
+
+  <pre class="prettyprint"><code>detail.path -> []                        // At root leveldetail.path -> [ 'user', 'email' ]       // At 'user.email'detail.path -> [ 'user', 'tags', 1 ]     // At 'user.tags[1]'</code></pre>
+
+
+
+
+          
+        
+            
+
+<h4 class="name" id="type">
+  <span class="type-signature"></span>type<span class="type-signature"> :string</span>
+</h4>
+
+
+
+
+  <div class="description">
+    The type of error.
+  </div>
+
+
+
+
+<dl class="details">
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+</dl>
+
+
+
+
+
+  <h5>Example</h5>
+  
+
+  <pre class="prettyprint"><code>detail.type -> 'array.length'      // An array length error.</code></pre>
+
+
+
+
+          
+        
+    
+
+    
+
+    
+
+    
+  </article>
+</section>
+
+
+
+
+  </div>
+
+  <br class="clear">
+
+  <footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.3</a>
+  </footer>
+
+  <script src="scripts/linenumber.js"></script>
+  <script src="scripts/pagelocation.js"></script>
+
+  
+
+</body>
+</html>
