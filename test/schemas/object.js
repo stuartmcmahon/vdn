@@ -8,14 +8,20 @@ describe('object', function() {
   it('entries', function() {
     const entries = { 'email': vdn.string().email() };
     const schemaOne = vdn.object().entries();
-    const schemaTwo = vdn.object().entries(entries);
+    const schemaTwo = vdn.object().entries(null);
+    const schemaThree = vdn.object().entries(entries);
 
     assert.deepEqual(schemaOne.toObject(), {
       type: 'object',
-      entries: { value: undefined },
+      entries: undefined,
     });
 
     assert.deepEqual(schemaTwo.toObject(), {
+      type: 'object',
+      entries: null,
+    });
+
+    assert.deepEqual(schemaThree.toObject(), {
       type: 'object',
       entries: { value: entries },
     });
