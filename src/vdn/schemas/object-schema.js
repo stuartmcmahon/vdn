@@ -4,7 +4,7 @@ const SchemaUtils = require('../main/schema-utils');
 const _wrapped = SchemaUtils.wrapped.bind(SchemaUtils);
 
 /**
- * Convenience class for creating object schemas.
+ * Convenience methods for creating object schemas.
  * @extends AnySchema
  * @hideconstructor
  */

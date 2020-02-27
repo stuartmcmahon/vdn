@@ -4,7 +4,7 @@ const SchemaUtils = require('../main/schema-utils');
 const _wrapped = SchemaUtils.wrapped.bind(SchemaUtils);
 
 /**
- * Convenience class for creating number schemas.
+ * Convenience methods for creating number schemas.
  * @extends AnySchema
  * @hideconstructor
  */
@@ -35,7 +35,7 @@ class NumberSchema extends AnySchema {
   }
 
   /**
-   * Limit the maximum value.
+   * Set the maximum value allowed.
    * @param {number} value - The maximum value allowed.
    * @example
    * const schema = vdn.number().max(42)
@@ -53,7 +53,7 @@ class NumberSchema extends AnySchema {
   }
 
   /**
-   * Limit the minimum value.
+   * Set the minimum value allowed.
    * @param {number} value - The minimum value allowed.
    * @example
    * const schema = vdn.number().min(42)

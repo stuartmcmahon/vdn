@@ -37,4 +37,3 @@ module.exports = new VDN();
 //   Then -> package.json['browser'] = "dist/browser/vdn.min.js"
 // - Async support with functions attemptAsync() and validateAsync(). Is there a need without
 //   third party validation functions though?
-// - Check all builder args, if an object it must be wrapped.

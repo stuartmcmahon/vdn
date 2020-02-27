@@ -3,7 +3,7 @@ const SchemaUtils = require('../main/schema-utils');
 const _wrapped = SchemaUtils.wrapped.bind(SchemaUtils);
 
 /**
- * Convenience class for creating any value schemas.
+ * Convenience methods for creating any value schemas.
  * @hideconstructor
  */
 class AnySchema {
@@ -28,7 +28,7 @@ class AnySchema {
    * @example
    * const schema = vdn.any().default(42)
    * 
-   * vdn.attempt('', schema)        // Result == '' (valid)
+   * vdn.attempt('', schema)        // Result == '' (already valid)
    * vdn.attempt(undefined, schema) // Result == 42 (use default)
    * @example <caption>Using data:</caption>
    * const schema = {
@@ -44,14 +44,14 @@ class AnySchema {
    * Declare an array of values that are invalid.
    * @param {*} values - The array of invalid values.
    * @example
-   * const schema = vdn.any().invalid(['a string', 5, 6.3 ])
+   * const schema = vdn.any().invalid(['a string', 5, 6.3])
    * 
    * vdn.attempt(7, schema)          // Result == 7 (valid)
    * vdn.attempt('a string', schema) // Throws ValidationError
    * @example <caption>Using data:</caption>
    * const schema = {
    *   type: 'any',
-   *   invalid: ['a string', 5, 6.3 ]
+   *   invalid: ['a string', 5, 6.3]
    * }
    */
   invalid(values) {
@@ -59,7 +59,7 @@ class AnySchema {
   }
 
   /**
-   * Require a value to exist (default is to allow the value 'undefined').
+   * Require a value to exist. The default is to allow the value 'undefined'.
    * @param {boolean} [required=true] - 'true' if the value is required. Otherwise 'false'.
    * @example
    * const schema = vdn.any().required()
@@ -69,7 +69,7 @@ class AnySchema {
    * @example <caption>Using data:</caption>
    * const schema = {
    *   type: 'any',
-   *   required: false
+   *   required: true
    * }
    */
   required(required = true) {
@@ -96,14 +96,14 @@ class AnySchema {
    * Declare an array of values that are valid.
    * @param {*} values - The array of valid values.
    * @example
-   * const schema = vdn.any().valid(['a string', 5, 6.3 ])
+   * const schema = vdn.any().valid(['a string', 5, 6.3])
    * 
    * vdn.attempt(5, schema)          // Result == 5 (valid)
    * vdn.attempt('nope', schema)     // Throws ValidationError
    * @example <caption>Using data:</caption>
    * const schema = {
    *   type: 'any',
-   *   valid: ['a string', 5, 6.3 ]
+   *   valid: ['a string', 5, 6.3]
    * }
    */
   valid(values) {

@@ -4,7 +4,7 @@ const SchemaUtils = require('../main/schema-utils');
 const _wrapped = SchemaUtils.wrapped.bind(SchemaUtils);
 
 /**
- * Convenience class for creating array schemas.
+ * Convenience methods for creating array schemas.
  * @extends AnySchema
  * @hideconstructor
  */
@@ -60,7 +60,7 @@ class ArraySchema extends AnySchema {
   }
 
   /**
-   * Require a maximum array length.
+   * Set a maximum array length.
    * @param {number} length - The maximum length allowed.
    * @example
    * const schema = vdn.array().maxLength(1)
@@ -79,7 +79,7 @@ class ArraySchema extends AnySchema {
   }
 
   /**
-   * Requires a minimum array length.
+   * Set a minimum array length.
    * @param {number} length - The minimum length allowed.
    * @example
    * const schema = vdn.array().minLength(1)

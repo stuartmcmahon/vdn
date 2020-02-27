@@ -44,8 +44,9 @@ class VDN extends Schemas {
    * @returns {*} The validated value (may have been cloned).
    * @example
    * const schema = vdn.array().items(vdn.string())
-   * const validated = vdn.attempt([ 'a', 'b' ], schema)
-   * validated -> [ 'a', 'b' ]
+   * 
+   * vdn.attempt(['a', 'b'], schema) // Result is ['a', 'b']
+   * vdn.attempt(['a', 2], schema)   // Throws ValidationError
    */
   attempt(value, schema) {
     const state = new State({
@@ -97,8 +98,15 @@ class VDN extends Schemas {
    * @param {string} type - The type to set defaults for.
    * @param {Object} defaults - The defaults to use.
    * @example
-   * vdn.setDefaults('any', { required: true })     // All types are now required by default.
-   * vdn.setDefaults('string', { required: false }) // Strings are now NOT required by default.
+   * // All types will be required by default.
+   * vdn.setDefaults('any', { required: true })
+   * 
+   * // Strings will now NOT be required by default. Limit string length.
+   * const stringDefaults = {
+   *     required: false, 
+   *     maxLength: 1024  
+   * }
+   * vdn.setDefaults('string', stringDefaults)
    */
   setDefaults(type, defaults) {
     const klass = this._validators[type].constructor;

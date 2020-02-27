@@ -13,7 +13,7 @@ class ValidationError extends Error {
     this.name = this.constructor.name;
 
     /**
-     * A multiline description of all the errors.
+     * A multiline message describing all the errors.
      * @member {string}
      */
     this.message;

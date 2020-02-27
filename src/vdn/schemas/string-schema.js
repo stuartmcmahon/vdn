@@ -4,7 +4,7 @@ const SchemaUtils = require('../main/schema-utils');
 const _wrapped = SchemaUtils.wrapped.bind(SchemaUtils);
 
 /**
- * Convenience class for creating string schemas.
+ * Convenience methods for creating string schemas.
  * @extends AnySchema
  * @hideconstructor
  */
@@ -18,7 +18,7 @@ class StringSchema extends AnySchema {
   }
 
   /**
-   * Require a string to be only digits [0-9].
+   * Require a string to only be digits [0-9].
    * @example
    * const schema = vdn.string().digits()
    * 
@@ -87,7 +87,7 @@ class StringSchema extends AnySchema {
   }
 
   /**
-   * Require a maximum string length.
+   * Set a maximum string length.
    * @param {number} length - The maximum length allowed.
    * @example
    * const schema = vdn.string().maxLength(1)
@@ -105,7 +105,7 @@ class StringSchema extends AnySchema {
   }
 
   /**
-   * Require a minimum string length.
+   * Set a minimum string length.
    * @param {number} length - The minimum length allowed.
    * @example
    * const schema = vdn.string().minLength(1)
@@ -124,11 +124,14 @@ class StringSchema extends AnySchema {
 
   /**
    * Require a string to not be empty.
+   *
+   * <p>Note this still allows the value 'undefined', see {@link AnySchema#required}.</p>
    * @example
    * const schema = vdn.string().notEmpty()
    * 
-   * vdn.attempt('x', schema)   // Result == 'x' (valid)
-   * vdn.attempt('', schema)    // Throws ValidationError
+   * vdn.attempt('x', schema)       // Result == 'x' (valid)
+   * vdn.attempt(undefined, schema) // Result == undefined (valid)
+   * vdn.attempt('', schema)        // Throws ValidationError
    * @example <caption>Using data:</caption>
    * const schema = {
    *   type: 'string',

@@ -28,7 +28,7 @@ vdn.attempt('5', schema);       // Result == 5 (string conversion)
 vdn.attempt('f', schema);       // Throws ValidationError
 ```
 
-Alternatively create your schemas using builder interface.
+Alternatively create schemas using the builder interface.
 
 ```js
 const schema = vdn.number().default(42);
