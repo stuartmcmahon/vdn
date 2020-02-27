@@ -1,8 +1,13 @@
 const _objectProto = Object.prototype;
 
 class SchemaUtils {
+  // Check for a pure Javascript object, excluding functions, arrays and derived classes.
   isObject(value) {
-    return value !== null && Object.getPrototypeOf(value) === _objectProto;
+    try {
+      return Object.getPrototypeOf(value) === _objectProto;
+    } catch (_err) {
+      return false;
+    }
   }
 
   //  Put non-object values in an object to normalise access by validators.
@@ -15,7 +20,6 @@ class SchemaUtils {
   //  normalised({})        -> {}               // No change
   //  normalised({ s: 1 })  -> { s: 1 }         // No change
   normalised(schema) {
-    // Check for vanilla javascript objects, excluding arrays and derived classes.
     if (this.isObject(schema)) {
       return schema;
     } else {
@@ -23,7 +27,7 @@ class SchemaUtils {
     }
   }
 
-  // Wrap objects that can't be distinguished from scheme definitions.
+  // Wrap objects that can't be distinguished from schema definitions.
   wrapped(value) {
     if (this.isObject(value)) {
       return { value: value };
