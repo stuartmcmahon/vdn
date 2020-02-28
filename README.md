@@ -4,6 +4,8 @@ Javascript validation library. Data driven schemas.
 
 Written as a module using ES6 (ECMAScript 2015). Also uses the spread operator '...'.
 
+![](https://github.com/stuartmcmahon/vdn/workflows/all-branches.svg)
+
 ## Note
 
 THIS LIBRARY IS NOT ACTIVELY MAINTAINED. IF YOU WISH TO USE IT PLEASE BE PREPARED TO FORK AND ADD YOUR OWN FIXES/ADDITIONS.
