@@ -1,0 +1,7 @@
+/.github/
+/.vscode/
+/docs/
+/node_modules/
+/test/
+.mocharc.js
+jsdoc.js
