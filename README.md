@@ -70,6 +70,6 @@ const schema = {
 };
 ```
 
-## Documentation
+## API Documentation
 
-
+Follow the [Link Here](https://stuartmcmahon.github.io/vdn/index.html).
