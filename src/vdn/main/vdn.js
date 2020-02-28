@@ -2,6 +2,7 @@ const AnyValidator = require('../validators/any-validator');
 const ArrayValidator = require('../validators/array-validator');
 const NumberValidator = require('../validators/number-validator');
 const ObjectValidator = require('../validators/object-validator');
+const Package = require('../../../package.json');
 const State = require('./state');
 const StringValidator = require('../validators/string-validator');
 const Schemas = require('../schemas');
@@ -145,6 +146,26 @@ class VDN extends Schemas {
     } else {
       return validator.validate(value, vanilla, state);
     }
+  }
+
+  /**
+   * The validation error class.
+   * @type {ValidationError}
+   * @readonly
+   */
+  get ValidationError() {
+    return ValidationError;
+  }
+
+  /**
+   * The package version number.
+   * @type {string}
+   * @readonly
+   * @example
+   * vdn.version // Returns semantic version number, eg: '1.0.2'
+   */
+  get version() {
+    return Package.version;
   }
 }
 
