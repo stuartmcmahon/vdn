@@ -4,7 +4,7 @@ Javascript validation library. Data driven schemas.
 
 Written as a module using ES6 (ECMAScript 2015). Also uses the spread operator '...'.
 
-![](https://github.com/stuartmcmahon/vdn/workflows/tests/badge.svg?branch=master)
+![tests](https://github.com/stuartmcmahon/vdn/workflows/tests/badge.svg?branch=master)
 
 ## Note
 
