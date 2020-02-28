@@ -75,12 +75,12 @@ class BaseValidator {
 
     // Execute rules in the order they were added to the validator.
     this.rules.forEach((rule, ruleName) => {
-      const data = merged[ruleName];
-
       // Is this rule used in the schema?
-      if (data === undefined) {
+      if (!_objectProto.hasOwnProperty.call(merged, ruleName)) {
         return; // No, try next.
       }
+
+      const data = merged[ruleName];
 
       // No longer missing.
       delete missing[ruleName];
