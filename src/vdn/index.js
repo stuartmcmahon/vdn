@@ -26,7 +26,7 @@ module.exports = new VDN();
 //     rule: 'email',
 //     validate() { runRule('string') && check regex, domain segments etc... }
 //   }
-// - Flag to allow immediate stop() on state.error()???
+// - Flag to allow immediate stop() on state.error()??? return Result.error(message, type) instead?
 // - Rewrite in Typescript?
 // - Would be nicer to have these funcs, but would need to be able to override 'delete' operator.
 //   vdn.defaults.string = { required: true }
@@ -37,3 +37,5 @@ module.exports = new VDN();
 //   Then -> package.json['browser'] = "dist/browser/vdn.min.js"
 // - Async support with functions attemptAsync() and validateAsync(). Is there a need without
 //   third party validation functions though?
+// - Reduce object construction by using smarter wrapping/unwrapping funcs or cached values (eg. classDefaults).
+// - Find unique names for generic errors, eg. 'schema.validate' -> 'schema.rule' | 'schema.type' | 'schema.validator'
