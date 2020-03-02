@@ -1,6 +1,8 @@
 const AnyValidator = require('./any-validator')
 const Result = require('./result')
 
+const _type = 'array';
+
 // Note: Rules are in order of evaluation.
 const _rules = [
   {
@@ -12,7 +14,7 @@ const _rules = [
       }
 
       if (!Array.isArray(value)) {
-        state.error(schema.message || '{{name}} is not an array.', `array.${this.name}`);
+        state.error(schema.message || '{{name}} is not an array.', `${_type}.${this.name}`);
         return Result.stop();
       }
     },
@@ -23,7 +25,7 @@ const _rules = [
     run(value, schema, state) {
       const length = schema['value'];
       if (value.length != length) {
-        state.error(schema.message || `{{name}} length is not ${length}.`, `array.${this.name}`);
+        state.error(schema.message || `{{name}} length is not ${length}.`, `${_type}.${this.name}`);
         return Result.stop();
       }
     },
@@ -34,7 +36,7 @@ const _rules = [
     run(value, schema, state) {
       const minLength = schema['value'];
       if (value.length < minLength) {
-        state.error(schema.message || `{{name}} is shorter than ${minLength}.`, `array.${this.name}`);
+        state.error(schema.message || `{{name}} is shorter than ${minLength}.`, `${_type}.${this.name}`);
         return Result.stop();
       }
     },
@@ -45,7 +47,7 @@ const _rules = [
     run(value, schema, state) {
       const maxLength = schema['value'];
       if (value.length > maxLength) {
-        state.error(schema.message || `{{name}} is longer than ${maxLength}.`, `array.${this.name}`);
+        state.error(schema.message || `{{name}} is longer than ${maxLength}.`, `${_type}.${this.name}`);
         return Result.stop();
       }
     },

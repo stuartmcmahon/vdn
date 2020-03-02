@@ -1,6 +1,8 @@
 const BaseValidator = require('./base-validator')
 const Result = require('./result')
 
+const _type = 'any';
+
 // Note: Rules are in order of evaluation.
 const _rules = [
   {
@@ -21,7 +23,7 @@ const _rules = [
         // TODO: Allow 'undefined' as well (ie. use 'notSet' value instead)?
         const isRequired = schema['value'];
         if (isRequired) {
-          state.error(schema.message || '{{name}} is required.', `base.${this.name}`);
+          state.error(schema.message || '{{name}} is required.', `${_type}.${this.name}`);
           return Result.stop();
         }
       }
@@ -49,7 +51,7 @@ const _rules = [
       // 3. Add freeze()/optimise() function to convert schemas at run time.
       const options = schema['value'];
       if (options.indexOf(value) === -1) {
-        state.error(schema.message || `{{name}} value is not valid.`, `base.${this.name}`);
+        state.error(schema.message || `{{name}} value is not valid.`, `${_type}.${this.name}`);
         return Result.stop();
       }
     },
@@ -64,7 +66,7 @@ const _rules = [
       // 3. Add freeze()/optimise() function to convert schemas at run time.
       const options = schema['value'];
       if (options.indexOf(value) !== -1) {
-        state.error(schema.message || `{{name}} value is invalid.`, `base.${this.name}`);
+        state.error(schema.message || `{{name}} value is invalid.`, `${_type}.${this.name}`);
         return Result.stop();
       }
     },

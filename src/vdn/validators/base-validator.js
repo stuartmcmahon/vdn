@@ -80,8 +80,6 @@ class BaseValidator {
         return; // No, try next.
       }
 
-      const data = merged[ruleName];
-
       // No longer missing.
       delete missing[ruleName];
 
@@ -90,6 +88,7 @@ class BaseValidator {
         return;
       }
 
+      const data = merged[ruleName];
       const ruleSchema = SchemaUtils.normalised(data);
 
       // Run rule and unpack result (result may be undefined).

@@ -1,6 +1,8 @@
 const AnyValidator = require('./any-validator')
 const Result = require('./result')
 
+const _type = 'number';
+
 // Note: Rules are in order of evaluation.
 const _rules = [
   {
@@ -15,7 +17,7 @@ const _rules = [
       const coerced = Number(value);
       
       if (Number.isNaN(coerced)) {
-        state.error(schema.message || '{{name}} is not a number.', `number.${this.name}`);
+        state.error(schema.message || '{{name}} is not a number.', `${_type}.${this.name}`);
         return Result.stop();
       }
 
@@ -30,12 +32,12 @@ const _rules = [
       const isInteger = Number.isInteger(value);
       if (wantInteger) {
         if (!isInteger) {
-          state.error(schema.message || '{{name}} is not an integer.', `number.${this.name}`);
+          state.error(schema.message || '{{name}} is not an integer.', `${_type}.${this.name}`);
           return Result.stop();
         }
       } else {
         if (isInteger) {
-          state.error(schema.message || '{{name}} is an integer.', `number.${this.name}`);
+          state.error(schema.message || '{{name}} is an integer.', `${_type}.${this.name}`);
           return Result.stop();
         }
       }
@@ -47,7 +49,7 @@ const _rules = [
     run(value, schema, state) {
       const minValue = schema['value'];
       if (value < minValue) {
-        state.error(schema.message || `{{name}} is less than ${minValue}.`, `number.${this.name}`);
+        state.error(schema.message || `{{name}} is less than ${minValue}.`, `${_type}.${this.name}`);
         return Result.stop();
       }
     },
@@ -58,7 +60,7 @@ const _rules = [
     run(value, schema, state) {
       const maxValue = schema['value'];
       if (value > maxValue) {
-        state.error(schema.message || `{{name}} is greater than ${maxValue}.`, `number.${this.name}`);
+        state.error(schema.message || `{{name}} is greater than ${maxValue}.`, `${_type}.${this.name}`);
         return Result.stop();
       }
     },

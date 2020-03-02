@@ -1,6 +1,8 @@
 const AnyValidator = require('./any-validator')
 const Result = require('./result')
 
+const _type = 'object';
+
 // Note: Rules are in order of evaluation.
 const _rules = [
   {  
@@ -13,7 +15,7 @@ const _rules = [
 
       // TODO: Add an 'allowNull' flag?
       if (typeof value !== 'object' || value === null) {
-        state.error(schema.message || '{{name}} is not an object.', `object.${this.name}`);
+        state.error(schema.message || '{{name}} is not an object.', `${_type}.${this.name}`);
         return Result.stop();
       }
     },
@@ -34,7 +36,7 @@ const _rules = [
   
         if (match === undefined) {
           // Not found.
-          state.error(`'${key}' is not allowed.`, `object.${this.name}`);
+          state.error(`'${key}' is not allowed.`, `${_type}.${this.name}`);
           hasError = true;
         } else {
           // Found.
