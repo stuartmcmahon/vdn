@@ -28,8 +28,8 @@ class ObjectSchema extends AnySchema {
    * })
    * 
    * vdn.attempt({ id:2,   mail:'a@b.com' }, schema) // Valid
-   * vdn.attempt([ id:2.3, mail:'a@b.com' }, schema) // Throws ValidationError
-   * vdn.attempt([ id:2,   mail:'b.com'   }, schema) // Throws ValidationError
+   * vdn.attempt({ id:2.3, mail:'a@b.com' }, schema) // Throws ValidationError
+   * vdn.attempt({ id:2,   mail:'b.com'   }, schema) // Throws ValidationError
    * @example <caption>Using data:</caption>
    * const schema = {
    *   type: 'object',

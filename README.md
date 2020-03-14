@@ -56,7 +56,7 @@ Because of this you MUST use the extended form when passing an object type as a 
 
 ```js
 const schema = {
-  type: 'number',
+  type: 'object',
   default: {
     value: {}, // Default is empty object.
   }
@@ -65,11 +65,32 @@ const schema = {
 
 ```js
 const schema = {
-  type: 'number',
+  type: 'object',
   default: {} // Error, invalid schema.
 };
 ```
 
+By default 'undefined' is a valid value. You can use 'required' or 'setDefaults' to make ALL values 'required' instead.
+
+```js
+// Using 'required'.
+const schema = const schema = vdn.object().entries({
+  id: vdn.number().integer().required(),
+  mail: vdn.string().email().required(),
+}).required();
+```
+
+```js
+// Using 'setDefaults'.
+vdn.setDefaults('any', { required: true })
+
+// No longer need to use '.required()'.
+const schema = const schema = vdn.object().entries({
+  id: vdn.number().integer(),
+  mail: vdn.string().email(),
+});
+```
+
 ## API Documentation
 
-Follow the [Link Here](https://stuartmcmahon.github.io/vdn/index.html).
+Start at the [VDN Class](https://stuartmcmahon.github.io/vdn/VDN.html).

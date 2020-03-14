@@ -29,6 +29,28 @@ function _coerceSchema(schema) {
  * Main validation class.
  * @extends Schemas
  * @hideconstructor
+ * @example
+ * const vdn = require('vdn');
+ * 
+ * const schema = vdn.number().default(42);
+ * 
+ * vdn.attempt(undefined, schema); // Result == 42 (default used)
+ * vdn.attempt(3, schema);         // Result == 3 (valid)
+ * vdn.attempt('5', schema);       // Result == 5 (string conversion)
+ * vdn.attempt('f', schema);       // Throws ValidationError
+ * @example
+ * const vdn = require('vdn');
+ * 
+ * const schema = vdn.object().entries({
+ *   id: vdn.number().integer().required(),
+ *   mail: vdn.string().email().required(),
+ * }).required();
+ * 
+ * vdn.attempt({ id:2, mail:'a@b.com'   }, schema); // Valid
+ * vdn.attempt({ id:2.3, mail:'a@b.com' }, schema); // Throws ValidationError
+ * vdn.attempt({ id:2,   mail:'b.com'   }, schema); // Throws ValidationError
+ * vdn.attempt({ undefined, undefined   }, schema); // Throws ValidationError
+ * vdn.attempt(undefined,                  schema); // Throws ValidationError
  */
 class VDN extends Schemas {
   constructor() {
@@ -132,6 +154,7 @@ class VDN extends Schemas {
    * @param {*} value - The value to validate.
    * @param {Object} schema - The schema to validate against.
    * @param {State} state - The current validation state.
+   * @ignore Still undecided whether this function is suitable for client use. 
    */
   validate(value, schema, state) {
     const vanilla = _coerceSchema(schema);
