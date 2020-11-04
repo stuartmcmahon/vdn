@@ -21,7 +21,7 @@ const _rules = [
     run(value, schema, state) {
       if (value === undefined) {
         // TODO: Allow 'undefined' as well (ie. use 'notSet' value instead)?
-        const isRequired = schema['value'];
+        const { value:isRequired=true } = schema;
         if (isRequired) {
           state.error(schema.message || '{{name}} is required.', `${_type}.${this.name}`);
           return Result.stop();

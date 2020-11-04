@@ -43,6 +43,47 @@ describe('string', function() {
     vdn.clearDefaults('string');
   });
 
+  it('digits-message', function() {
+    const schema = {
+      type: 'string',
+      digits: {
+        message: "{{name}} is not digits."
+      },
+    };
+    const valueOne = '01';
+    const valueTwo = '12345a';
+
+    assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema));
+  });
+
+  it('not-digits', function() {
+    const schema = {
+      type: 'string',
+      digits: false,
+    };
+    const valueOne = '01a';
+    const valueTwo = '12345';
+
+    assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema));
+  });
+
+  it('not-digits-message', function() {
+    const schema = {
+      type: 'string',
+      digits: {
+        value: false,
+        message: "{{name}} is digits."
+      },
+    };
+    const valueOne = '01a';
+    const valueTwo = '12345';
+
+    assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema));
+  });
+
   it('email', function() {
     const schema = {
       type: 'string',
@@ -68,6 +109,47 @@ describe('string', function() {
     assert.throws(() => vdn.attempt(valueFour, schema));
     assert.throws(() => vdn.attempt(valueFive, schema));
     vdn.clearDefaults('string');
+  });
+
+  it('email-message', function() {
+    const schema = {
+      type: 'string',
+      email: {
+        message: "{{name}} is not an email address.",
+      },
+    };
+    const valueOne = 's@m.com';
+    const valueTwo = 'longer.com';
+    
+    assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema));
+  });
+
+  it('not-email', function() {
+    const schema = {
+      type: 'string',
+      email: false,
+    };
+    const valueOne = 'longer.com';
+    const valueTwo = 's@m.com';
+    
+    assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema));
+  });
+
+  it('not-email-message', function() {
+    const schema = {
+      type: 'string',
+      email: {
+        value: false,
+        message: "{{name}} is an email address.",
+      },
+    };
+    const valueOne = 'longer.com';
+    const valueTwo = 's@m.com';
+    
+    assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema));
   });
 
   it('hex', function() {
@@ -104,6 +186,47 @@ describe('string', function() {
     assert.throws(() => vdn.attempt(valueThree, schema));
     assert.throws(() => vdn.attempt(valueFour, schema));
     vdn.clearDefaults('string');
+  });
+
+  it('hex-message', function() {
+    const schema = {
+      type: 'string',
+      hex: {
+        message: "{{name}} is not a hex value.",
+      },
+    };
+    const valueOne = '1f';
+    const valueTwo = 'g1f';
+
+    assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema));
+  });
+
+  it('not-hex', function() {
+    const schema = {
+      type: 'string',
+      hex: false,
+    };
+    const valueOne = 'g1f';
+    const valueTwo = '1f';
+
+    assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema));
+  });
+
+  it('not-hex-message', function() {
+    const schema = {
+      type: 'string',
+      hex: {
+        value: false,
+        message: "{{name}} is a hex value.",
+      },
+    };
+    const valueOne = 'g1f';
+    const valueTwo = '1f';
+
+    assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema));
   });
 
   it('length', function() {
@@ -213,6 +336,47 @@ describe('string', function() {
     assert.throws(() => vdn.attempt(valueSeven, schema));
     assert.throws(() => vdn.attempt(valueEight, schema));
     vdn.clearDefaults('string');
+  });
+
+  it('notEmpty-message', function() {
+    const schema = {
+      type: 'string',
+      notEmpty: {
+        message: "{{name}} is empty.",
+      },
+    };
+    const valueOne = 's';
+    const valueTwo = '';
+
+    assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema));
+  });
+
+  it('not-notEmpty', function() {
+    const schema = {
+      type: 'string',
+      notEmpty: false,
+    };
+    const valueOne = '';
+    const valueTwo = 's';
+
+    assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema));
+  });
+
+  it('not-notEmpty-message', function() {
+    const schema = {
+      type: 'string',
+      notEmpty: {
+        value: false,
+        message: "{{name}} is not empty.",
+      },
+    };
+    const valueOne = '';
+    const valueTwo = 's';
+
+    assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema));
   });
 
   it('regExp', function() {

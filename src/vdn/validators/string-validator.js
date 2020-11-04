@@ -1,8 +1,6 @@
 const AnyValidator = require('./any-validator')
 const Result = require('./result')
 
-const _type = 'string';
-
 // Enforce multi-domain segments?
 // const _emailRegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 // Note: This version allows single domain segments eg. 'test@localhost'.
@@ -30,7 +28,7 @@ const _rules = [
   {
     name: 'digits',
     run(value, schema, state) {
-      const wantDigits = schema['value'];
+      const { value:wantDigits=true } = schema;
       const isDigits = _digitsRegExp.test(value);
       if (wantDigits) {
         if (!isDigits) {
@@ -49,7 +47,7 @@ const _rules = [
   {
     name: 'email',
     run(value, schema, state) {
-      const wantEmail = schema['value'];
+      const { value:wantEmail=true } = schema;
       const isEmail = _emailRegExp.test(value);
       if (wantEmail) {
         if (!isEmail) {
@@ -68,7 +66,7 @@ const _rules = [
   {
     name: 'hex',
     run(value, schema, state) {
-      const wantHex = schema['value'];
+      const { value:wantHex=true } = schema;
       const isHex = _hexRegExp.test(value);
       if (wantHex) {
         if (!isHex) {
@@ -120,7 +118,7 @@ const _rules = [
   {
     name: 'notEmpty',
     run(value, schema, state) {
-      const wantNotEmpty = schema['value'];
+      const { value:wantNotEmpty=true } = schema;
       const isEmpty = value.length === 0;
       if (wantNotEmpty) {
         if (isEmpty) {

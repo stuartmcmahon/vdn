@@ -28,7 +28,7 @@ const _rules = [
   {
     name: 'integer',
     run(value, schema, state) {
-      const wantInteger = schema['value'];
+      const { value:wantInteger=true } = schema;
       const isInteger = Number.isInteger(value);
       if (wantInteger) {
         if (!isInteger) {

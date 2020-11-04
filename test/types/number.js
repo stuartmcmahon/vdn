@@ -55,4 +55,48 @@ describe('number', function() {
     assert.throws(() => vdn.attempt(valueOne, schema));
     vdn.clearDefaults('number');
   });
+
+  it('integer-message', function() {
+    const schema = {
+      type: 'number',
+      integer: {
+        message: "{{name}} is not an integer.",
+      },
+      min: 3,
+    };
+    const valueOne = 5;
+    const valueTwo = 6.3;
+
+    assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema));
+  });
+
+  it('not-integer', function() {
+    const schema = {
+      type: 'number',
+      integer: false,
+      min: 3,
+    };
+    const valueOne = 6.3;
+    const valueTwo = 5;
+
+    assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema));
+  });
+
+  it('not-integer-message', function() {
+    const schema = {
+      type: 'number',
+      integer: {
+        value: false,
+        message: "{{name}} is an integer.",
+      },
+      min: 3,
+    };
+    const valueOne = 6.3;
+    const valueTwo = 5;
+
+    assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema));
+  });
 });
