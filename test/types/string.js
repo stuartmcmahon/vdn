@@ -26,20 +26,20 @@ describe('string', function() {
     assert.deepEqual(valueTwo, vdn.attempt(valueTwo, schema));
     assert.deepEqual(valueThree, vdn.attempt(valueThree, schema));
     assert.deepEqual(valueFour, vdn.attempt(valueFour, schema));
-    assert.throws(() => vdn.attempt(valueFive, schema));
-    assert.throws(() => vdn.attempt(valueSix, schema));
-    assert.throws(() => vdn.attempt(valueSeven, schema));
-    assert.throws(() => vdn.attempt(valueEight, schema));
-    assert.throws(() => vdn.attempt(valueNine, schema));
-    assert.throws(() => vdn.attempt(valueTen, schema));
-    assert.throws(() => vdn.attempt(valueEleven, schema));
+    assert.throws(() => vdn.attempt(valueFive, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueSix, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueSeven, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueEight, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueNine, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueTen, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueEleven, schema), vdn.ValidationError);
 
     // Override defaults to alter the result.
     vdn.setDefaults('string', { length: 2 });
     assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
-    assert.throws(() => vdn.attempt(valueTwo, schema));
-    assert.throws(() => vdn.attempt(valueThree, schema));
-    assert.throws(() => vdn.attempt(valueFour, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueThree, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueFour, schema), vdn.ValidationError);
     vdn.clearDefaults('string');
   });
 
@@ -54,7 +54,7 @@ describe('string', function() {
     const valueTwo = '12345a';
 
     assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
-    assert.throws(() => vdn.attempt(valueTwo, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema), vdn.ValidationError);
   });
 
   it('not-digits', function() {
@@ -66,7 +66,7 @@ describe('string', function() {
     const valueTwo = '12345';
 
     assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
-    assert.throws(() => vdn.attempt(valueTwo, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema), vdn.ValidationError);
   });
 
   it('not-digits-message', function() {
@@ -81,7 +81,7 @@ describe('string', function() {
     const valueTwo = '12345';
 
     assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
-    assert.throws(() => vdn.attempt(valueTwo, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema), vdn.ValidationError);
   });
 
   it('email', function() {
@@ -97,17 +97,17 @@ describe('string', function() {
 
     assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
     assert.deepEqual(valueTwo, vdn.attempt(valueTwo, schema));
-    assert.throws(() => vdn.attempt(valueThree, schema));
-    assert.throws(() => vdn.attempt(valueFour, schema));
-    assert.throws(() => vdn.attempt(valueFive, schema));
+    assert.throws(() => vdn.attempt(valueThree, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueFour, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueFive, schema), vdn.ValidationError);
 
     // Override defaults to alter the result.
     vdn.setDefaults('string', { maxLength: 15 });
     assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
-    assert.throws(() => vdn.attempt(valueTwo, schema));
-    assert.throws(() => vdn.attempt(valueThree, schema));
-    assert.throws(() => vdn.attempt(valueFour, schema));
-    assert.throws(() => vdn.attempt(valueFive, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueThree, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueFour, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueFive, schema), vdn.ValidationError);
     vdn.clearDefaults('string');
   });
 
@@ -122,7 +122,7 @@ describe('string', function() {
     const valueTwo = 'longer.com';
     
     assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
-    assert.throws(() => vdn.attempt(valueTwo, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema), vdn.ValidationError);
   });
 
   it('not-email', function() {
@@ -134,7 +134,7 @@ describe('string', function() {
     const valueTwo = 's@m.com';
     
     assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
-    assert.throws(() => vdn.attempt(valueTwo, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema), vdn.ValidationError);
   });
 
   it('not-email-message', function() {
@@ -149,7 +149,7 @@ describe('string', function() {
     const valueTwo = 's@m.com';
     
     assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
-    assert.throws(() => vdn.attempt(valueTwo, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema), vdn.ValidationError);
   });
 
   it('hex', function() {
@@ -171,20 +171,20 @@ describe('string', function() {
     assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
     assert.deepEqual(valueTwo, vdn.attempt(valueTwo, schema));
     assert.deepEqual(valueThree, vdn.attempt(valueThree, schema));
-    assert.throws(() => vdn.attempt(valueFour, schema));
-    assert.throws(() => vdn.attempt(valueFive, schema));
-    assert.throws(() => vdn.attempt(valueSix, schema));
-    assert.throws(() => vdn.attempt(valueSeven, schema));
-    assert.throws(() => vdn.attempt(valueEight, schema));
-    assert.throws(() => vdn.attempt(valueNine, schema));
-    assert.throws(() => vdn.attempt(valueTen, schema));
+    assert.throws(() => vdn.attempt(valueFour, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueFive, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueSix, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueSeven, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueEight, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueNine, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueTen, schema), vdn.ValidationError);
 
     // Override defaults to alter the result.
     vdn.setDefaults('string', { length: 2 });
     assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
-    assert.throws(() => vdn.attempt(valueTwo, schema));
-    assert.throws(() => vdn.attempt(valueThree, schema));
-    assert.throws(() => vdn.attempt(valueFour, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueThree, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueFour, schema), vdn.ValidationError);
     vdn.clearDefaults('string');
   });
 
@@ -199,7 +199,7 @@ describe('string', function() {
     const valueTwo = 'g1f';
 
     assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
-    assert.throws(() => vdn.attempt(valueTwo, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema), vdn.ValidationError);
   });
 
   it('not-hex', function() {
@@ -211,7 +211,7 @@ describe('string', function() {
     const valueTwo = '1f';
 
     assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
-    assert.throws(() => vdn.attempt(valueTwo, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema), vdn.ValidationError);
   });
 
   it('not-hex-message', function() {
@@ -226,7 +226,7 @@ describe('string', function() {
     const valueTwo = '1f';
 
     assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
-    assert.throws(() => vdn.attempt(valueTwo, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema), vdn.ValidationError);
   });
 
   it('length', function() {
@@ -244,24 +244,24 @@ describe('string', function() {
     const valueEight = { 's': '1' };
 
     assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
-    assert.throws(() => vdn.attempt(valueTwo, schema));
-    assert.throws(() => vdn.attempt(valueThree, schema));
-    assert.throws(() => vdn.attempt(valueFour, schema));
-    assert.throws(() => vdn.attempt(valueFive, schema));
-    assert.throws(() => vdn.attempt(valueSix, schema));
-    assert.throws(() => vdn.attempt(valueSeven, schema));
-    assert.throws(() => vdn.attempt(valueEight, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueThree, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueFour, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueFive, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueSix, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueSeven, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueEight, schema), vdn.ValidationError);
 
     // Override defaults to alter the result.
     vdn.setDefaults('string', { minLength: 3 });
-    assert.throws(() => vdn.attempt(valueOne, schema));
-    assert.throws(() => vdn.attempt(valueTwo, schema));
-    assert.throws(() => vdn.attempt(valueThree, schema));
-    assert.throws(() => vdn.attempt(valueFour, schema));
-    assert.throws(() => vdn.attempt(valueFive, schema));
-    assert.throws(() => vdn.attempt(valueSix, schema));
-    assert.throws(() => vdn.attempt(valueSeven, schema));
-    assert.throws(() => vdn.attempt(valueEight, schema));
+    assert.throws(() => vdn.attempt(valueOne, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueTwo, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueThree, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueFour, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueFive, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueSix, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueSeven, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueEight, schema), vdn.ValidationError);
     vdn.clearDefaults('string');
   });
 
@@ -282,23 +282,23 @@ describe('string', function() {
     assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
     assert.deepEqual(valueTwo, vdn.attempt(valueTwo, schema));
     assert.deepEqual(valueThree, vdn.attempt(valueThree, schema));
-    assert.throws(() => vdn.attempt(valueFour, schema));
-    assert.throws(() => vdn.attempt(valueFive, schema));
-    assert.throws(() => vdn.attempt(valueSix, schema));
-    assert.throws(() => vdn.attempt(valueSeven, schema));
-    assert.throws(() => vdn.attempt(valueEight, schema));
+    assert.throws(() => vdn.attempt(valueFour, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueFive, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueSix, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueSeven, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueEight, schema), vdn.ValidationError);
     assert.deepEqual(valueThree, vdn.attempt(valueThree, schema));
 
     // Override defaults to alter the result.
     vdn.setDefaults('string', { minLength: 9 });
-    assert.throws(() => vdn.attempt(valueOne, schema));
+    assert.throws(() => vdn.attempt(valueOne, schema), vdn.ValidationError);
     assert.deepEqual(valueTwo, vdn.attempt(valueTwo, schema));
-    assert.throws(() => vdn.attempt(valueThree, schema));
-    assert.throws(() => vdn.attempt(valueFour, schema));
-    assert.throws(() => vdn.attempt(valueFive, schema));
-    assert.throws(() => vdn.attempt(valueSix, schema));
-    assert.throws(() => vdn.attempt(valueSeven, schema));
-    assert.throws(() => vdn.attempt(valueEight, schema));
+    assert.throws(() => vdn.attempt(valueThree, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueFour, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueFive, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueSix, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueSeven, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueEight, schema), vdn.ValidationError);
     vdn.clearDefaults('string');
   });
 
@@ -320,21 +320,21 @@ describe('string', function() {
     assert.deepEqual(valueTwo, vdn.attempt(valueTwo, schema));
     assert.deepEqual(valueThree, vdn.attempt(valueThree, schema));
     assert.deepEqual(valueFour, vdn.attempt(valueFour, schema));
-    assert.throws(() => vdn.attempt(valueFive, schema));
-    assert.throws(() => vdn.attempt(valueSix, schema));
-    assert.throws(() => vdn.attempt(valueSeven, schema));
-    assert.throws(() => vdn.attempt(valueEight, schema));
+    assert.throws(() => vdn.attempt(valueFive, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueSix, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueSeven, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueEight, schema), vdn.ValidationError);
 
     // Override defaults to alter the result.
     vdn.setDefaults('string', { length: 1 });
     assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
     assert.deepEqual(valueTwo, vdn.attempt(valueTwo, schema));
-    assert.throws(() => vdn.attempt(valueThree, schema));
-    assert.throws(() => vdn.attempt(valueFour, schema));
-    assert.throws(() => vdn.attempt(valueFive, schema));
-    assert.throws(() => vdn.attempt(valueSix, schema));
-    assert.throws(() => vdn.attempt(valueSeven, schema));
-    assert.throws(() => vdn.attempt(valueEight, schema));
+    assert.throws(() => vdn.attempt(valueThree, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueFour, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueFive, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueSix, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueSeven, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueEight, schema), vdn.ValidationError);
     vdn.clearDefaults('string');
   });
 
@@ -349,7 +349,7 @@ describe('string', function() {
     const valueTwo = '';
 
     assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
-    assert.throws(() => vdn.attempt(valueTwo, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema), vdn.ValidationError);
   });
 
   it('not-notEmpty', function() {
@@ -361,7 +361,7 @@ describe('string', function() {
     const valueTwo = 's';
 
     assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
-    assert.throws(() => vdn.attempt(valueTwo, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema), vdn.ValidationError);
   });
 
   it('not-notEmpty-message', function() {
@@ -376,7 +376,7 @@ describe('string', function() {
     const valueTwo = 's';
 
     assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
-    assert.throws(() => vdn.attempt(valueTwo, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema), vdn.ValidationError);
   });
 
   it('regExp', function() {
@@ -398,22 +398,22 @@ describe('string', function() {
     assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
     assert.deepEqual(valueTwo, vdn.attempt(valueTwo, schema));
     assert.deepEqual(valueThree, vdn.attempt(valueThree, schema));
-    assert.throws(() => vdn.attempt(valueFour, schema));
-    assert.throws(() => vdn.attempt(valueFive, schema));
-    assert.throws(() => vdn.attempt(valueSix, schema));
-    assert.throws(() => vdn.attempt(valueSeven, schema));
-    assert.throws(() => vdn.attempt(valueEight, schema));
-    assert.throws(() => vdn.attempt(valueNine, schema));
-    assert.throws(() => vdn.attempt(valueTen, schema));
+    assert.throws(() => vdn.attempt(valueFour, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueFive, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueSix, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueSeven, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueEight, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueNine, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueTen, schema), vdn.ValidationError);
 
     // Override defaults to alter the result.
     vdn.setDefaults('string', { length: 9 });
     assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
-    assert.throws(() => vdn.attempt(valueTwo, schema));
-    assert.throws(() => vdn.attempt(valueThree, schema));
-    assert.throws(() => vdn.attempt(valueFour, schema));
-    assert.throws(() => vdn.attempt(valueFive, schema));
-    assert.throws(() => vdn.attempt(valueSix, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueThree, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueFour, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueFive, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueSix, schema), vdn.ValidationError);
     vdn.clearDefaults('string');
   });
 });

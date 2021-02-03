@@ -48,7 +48,7 @@ describe('any', function() {
     const valueThree = 15.5;
     const valueFour = [];
 
-    assert.throws(() => vdn.attempt(undefined, withRequired));
+    assert.throws(() => vdn.attempt(undefined, withRequired), vdn.ValidationError);
     assert.deepEqual(undefined, vdn.attempt(undefined, withoutRequired));
     
     assert.deepEqual(valueOne, vdn.attempt(valueOne, withRequired));
@@ -77,9 +77,9 @@ describe('any', function() {
 
     assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
     assert.deepEqual(validArray, vdn.attempt(validArray, schema));
-    assert.throws(() => vdn.attempt(valueTwo, schema));
-    assert.throws(() => vdn.attempt(valueThree, schema));
-    assert.throws(() => vdn.attempt(valueFour, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueThree, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueFour, schema), vdn.ValidationError);
   });
 
   it('invalid', function() {
@@ -98,8 +98,8 @@ describe('any', function() {
     assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
     assert.deepEqual(valueTwo, vdn.attempt(valueTwo, schema));
     assert.deepEqual(valueThree, vdn.attempt(valueThree, schema));
-    assert.throws(() => vdn.attempt(valueFour, schema));
-    assert.throws(() => vdn.attempt(valueFive, schema));
-    assert.throws(() => vdn.attempt(valueSix, schema));
+    assert.throws(() => vdn.attempt(valueFour, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueFive, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueSix, schema), vdn.ValidationError);
   });
 });

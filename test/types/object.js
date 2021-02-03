@@ -29,9 +29,9 @@ describe('object', function() {
     const unexpectedFour = { ...expected, a: 43 }; // 'a' should be a string.
 
     assert.deepEqual(expected, vdn.attempt(expected, schema));
-    assert.throws(() => vdn.attempt(unexpectedOne, schema));
-    assert.throws(() => vdn.attempt(unexpectedTwo, schema));
-    assert.throws(() => vdn.attempt(unexpectedThree, schema));
-    assert.throws(() => vdn.attempt(unexpectedFour, schema));
+    assert.throws(() => vdn.attempt(unexpectedOne, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(unexpectedTwo, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(unexpectedThree, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(unexpectedFour, schema), vdn.ValidationError);
   });
 });

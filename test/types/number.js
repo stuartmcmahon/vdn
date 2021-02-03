@@ -19,14 +19,14 @@ describe('number', function() {
 
     assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
     assert.deepEqual(valueTwo, vdn.attempt(valueTwo, schema));
-    assert.throws(() => vdn.attempt(valueThree, schema));
-    assert.throws(() => vdn.attempt(valueFour, schema));
-    assert.throws(() => vdn.attempt(valueFive, schema));
-    assert.throws(() => vdn.attempt(valueSix, schema));
+    assert.throws(() => vdn.attempt(valueThree, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueFour, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueFive, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueSix, schema), vdn.ValidationError);
 
     // Override defaults to alter the result.
     vdn.setDefaults('number', { max: 11.0 });
-    assert.throws(() => vdn.attempt(valueOne, schema));
+    assert.throws(() => vdn.attempt(valueOne, schema), vdn.ValidationError);
     vdn.clearDefaults('number');
   });
 
@@ -45,14 +45,14 @@ describe('number', function() {
 
     assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
     assert.deepEqual(valueTwo, vdn.attempt(valueTwo, schema));
-    assert.throws(() => vdn.attempt(valueThree, schema));
-    assert.throws(() => vdn.attempt(valueFour, schema));
-    assert.throws(() => vdn.attempt(valueFive, schema));
-    assert.throws(() => vdn.attempt(valueSix, schema));
+    assert.throws(() => vdn.attempt(valueThree, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueFour, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueFive, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueSix, schema), vdn.ValidationError);
 
     // Override defaults to alter the result.
     vdn.setDefaults('number', { max: 4 });
-    assert.throws(() => vdn.attempt(valueOne, schema));
+    assert.throws(() => vdn.attempt(valueOne, schema), vdn.ValidationError);
     vdn.clearDefaults('number');
   });
 
@@ -68,7 +68,7 @@ describe('number', function() {
     const valueTwo = 6.3;
 
     assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
-    assert.throws(() => vdn.attempt(valueTwo, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema), vdn.ValidationError);
   });
 
   it('not-integer', function() {
@@ -81,7 +81,7 @@ describe('number', function() {
     const valueTwo = 5;
 
     assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
-    assert.throws(() => vdn.attempt(valueTwo, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema), vdn.ValidationError);
   });
 
   it('not-integer-message', function() {
@@ -97,6 +97,6 @@ describe('number', function() {
     const valueTwo = 5;
 
     assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
-    assert.throws(() => vdn.attempt(valueTwo, schema));
+    assert.throws(() => vdn.attempt(valueTwo, schema), vdn.ValidationError);
   });
 });

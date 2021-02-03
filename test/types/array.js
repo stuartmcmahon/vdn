@@ -20,19 +20,19 @@ describe('array', function() {
     assert.deepEqual(valueOne, vdn.attempt(valueOne, withLength));
     assert.deepEqual(valueOne, vdn.attempt(valueOne, withoutLength));
 
-    assert.throws(() => vdn.attempt(valueTwo, withLength));
+    assert.throws(() => vdn.attempt(valueTwo, withLength), vdn.ValidationError);
     assert.deepEqual(valueTwo, vdn.attempt(valueTwo, withoutLength));
 
-    assert.throws(() => vdn.attempt(valueThree, withLength));
+    assert.throws(() => vdn.attempt(valueThree, withLength), vdn.ValidationError);
     assert.deepEqual(valueThree, vdn.attempt(valueThree, withoutLength));
 
     // Override defaults to alter the result.
     vdn.setDefaults('array', { minLength: 3 });
-    assert.throws(() => vdn.attempt(valueOne, withLength));
-    assert.throws(() => vdn.attempt(valueOne, withoutLength));
-    assert.throws(() => vdn.attempt(valueTwo, withLength));
-    assert.throws(() => vdn.attempt(valueTwo, withoutLength));
-    assert.throws(() => vdn.attempt(valueThree, withLength));
+    assert.throws(() => vdn.attempt(valueOne, withLength), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueOne, withoutLength), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueTwo, withLength), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueTwo, withoutLength), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueThree, withLength), vdn.ValidationError);
     assert.deepEqual(valueThree, vdn.attempt(valueThree, withoutLength));
     vdn.clearDefaults('array');
   });
@@ -52,7 +52,7 @@ describe('array', function() {
     assert.deepEqual(valueOne, vdn.attempt(valueOne, withLength));
     assert.deepEqual(valueOne, vdn.attempt(valueOne, withoutLength));
 
-    assert.throws(() => vdn.attempt(valueTwo, withLength));
+    assert.throws(() => vdn.attempt(valueTwo, withLength), vdn.ValidationError);
     assert.deepEqual(valueTwo, vdn.attempt(valueTwo, withoutLength));
     
     assert.deepEqual(valueThree, vdn.attempt(valueThree, withLength));
@@ -60,10 +60,10 @@ describe('array', function() {
 
     // Override defaults to alter the result.
     vdn.setDefaults('array', { length: 3 });
-    assert.throws(() => vdn.attempt(valueOne, withLength));
-    assert.throws(() => vdn.attempt(valueOne, withoutLength));
-    assert.throws(() => vdn.attempt(valueTwo, withLength));
-    assert.throws(() => vdn.attempt(valueTwo, withoutLength));
+    assert.throws(() => vdn.attempt(valueOne, withLength), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueOne, withoutLength), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueTwo, withLength), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueTwo, withoutLength), vdn.ValidationError);
     assert.deepEqual(valueThree, vdn.attempt(valueThree, withLength));
     assert.deepEqual(valueThree, vdn.attempt(valueThree, withoutLength));
     vdn.clearDefaults('array');
@@ -87,16 +87,16 @@ describe('array', function() {
     assert.deepEqual(valueTwo, vdn.attempt(valueTwo, withLength));
     assert.deepEqual(valueTwo, vdn.attempt(valueTwo, withoutLength));
     
-    assert.throws(() => vdn.attempt(valueThree, withLength));
+    assert.throws(() => vdn.attempt(valueThree, withLength), vdn.ValidationError);
     assert.deepEqual(valueThree, vdn.attempt(valueThree, withoutLength));
 
     // Override defaults to alter the result.
     vdn.setDefaults('array', { minLength: 2 });
     assert.deepEqual(valueOne, vdn.attempt(valueOne, withLength));
     assert.deepEqual(valueOne, vdn.attempt(valueOne, withoutLength));
-    assert.throws(() => vdn.attempt(valueTwo, withLength));
-    assert.throws(() => vdn.attempt(valueTwo, withoutLength));
-    assert.throws(() => vdn.attempt(valueThree, withLength));
+    assert.throws(() => vdn.attempt(valueTwo, withLength), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueTwo, withoutLength), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueThree, withLength), vdn.ValidationError);
     assert.deepEqual(valueThree, vdn.attempt(valueThree, withoutLength));
     vdn.clearDefaults('array');
   });
@@ -118,15 +118,15 @@ describe('array', function() {
     assert.deepEqual(valueOne, vdn.attempt(valueOne, schema));
     assert.deepEqual(valueTwo, vdn.attempt(valueTwo, schema));
     assert.deepEqual(valueThree, vdn.attempt(valueThree, schema));
-    assert.throws(() => vdn.attempt(valueFour, schema));
-    assert.throws(() => vdn.attempt(valueFive, schema));
-    assert.throws(() => vdn.attempt(valueSix, schema));
+    assert.throws(() => vdn.attempt(valueFour, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueFive, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueSix, schema), vdn.ValidationError);
 
     // Override defaults to alter the result.
     vdn.setDefaults('array', { minLength: 3 });
-    assert.throws(() => vdn.attempt(valueOne, schema));
-    assert.throws(() => vdn.attempt(valueTwo, schema));
-    assert.throws(() => vdn.attempt(valueThree, schema));
+    assert.throws(() => vdn.attempt(valueOne, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueTwo, schema), vdn.ValidationError);
+    assert.throws(() => vdn.attempt(valueThree, schema), vdn.ValidationError);
     vdn.clearDefaults('array');
   });
 });
