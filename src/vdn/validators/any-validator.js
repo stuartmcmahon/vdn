@@ -1,5 +1,5 @@
-const BaseValidator = require('./base-validator')
-const Result = require('./result')
+const BaseValidator = require('./base-validator');
+const Result = require('./result');
 
 const _type = 'any';
 

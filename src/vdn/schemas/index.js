@@ -1,8 +1,8 @@
-const AnySchema = require('./any-schema')
-const ArraySchema = require('./array-schema')
-const NumberSchema = require('./number-schema')
-const ObjectSchema = require('./object-schema')
-const StringSchema = require('./string-schema')
+const AnySchema = require('./any-schema');
+const ArraySchema = require('./array-schema');
+const NumberSchema = require('./number-schema');
+const ObjectSchema = require('./object-schema');
+const StringSchema = require('./string-schema');
 
 /**
  * Convenience methods for constructing schema types.

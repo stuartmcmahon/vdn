@@ -1,4 +1,4 @@
-const AnySchema = require('./any-schema')
+const AnySchema = require('./any-schema');
 const SchemaUtils = require('../main/schema-utils');
 
 const _wrapped = SchemaUtils.wrapped.bind(SchemaUtils);

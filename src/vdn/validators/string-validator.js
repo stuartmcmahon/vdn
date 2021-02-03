@@ -1,5 +1,7 @@
-const AnyValidator = require('./any-validator')
-const Result = require('./result')
+const AnyValidator = require('./any-validator');
+const Result = require('./result');
+
+const _type = 'string';
 
 // Enforce multi-domain segments?
 // const _emailRegExp = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;

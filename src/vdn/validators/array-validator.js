@@ -1,5 +1,5 @@
-const AnyValidator = require('./any-validator')
-const Result = require('./result')
+const AnyValidator = require('./any-validator');
+const Result = require('./result');
 
 const _type = 'array';
 
